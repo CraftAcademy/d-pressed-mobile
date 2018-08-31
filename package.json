@@ -14,7 +14,10 @@
     "test-coverage": "karma start ./test-config/karma.conf.js --coverage",
     "e2e": "npm run e2e-update && npm run e2e-test",
     "e2e-test": "protractor ./test-config/protractor.conf.js",
-    "e2e-update": "webdriver-manager update --standalone false --gecko false"
+    "e2e-update": "webdriver-manager update --standalone false --gecko false",
+    "e2e-semaphore": "ionic-app-scripts build; node serve-static.js& npm run e2e:standalone; kill %1",
+    "e2e:standalone": "webdriver-manager update --standalone false --gecko false; protractor ./test-config/protractor.conf.js"
+
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
@@ -45,7 +48,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.1.11",
+    "@ionic/app-scripts": "^3.2.0",
     "@ionic/lab": "1.0.8",
     "@types/jasmine": "^2.8.8",
     "@types/node": "^10.7.1",
