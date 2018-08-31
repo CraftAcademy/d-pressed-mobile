@@ -25,7 +25,9 @@ export class MyApp {
     private _tokenService: Angular2TokenService
   ) {
     this._tokenService.init({
-      apiBase: 'https://dpressed.herokuapp.com/api'
+      //apiBase: 'https://dpressed.herokuapp.com/api'
+      apiBase: 'localhost:3000/api'
+
     });
     
     this.initializeApp();
@@ -83,7 +85,10 @@ export class MyApp {
   login(credentials) {
   this._tokenService
     .signIn(credentials)
-      .subscribe(res => (this.currentUser = res.json().data), err => console.error('error')    
+      .subscribe(res => {
+        console.log(res);
+        (this.currentUser = res.json().data)}
+        , err => console.error('error')    
     );      
   }
   
